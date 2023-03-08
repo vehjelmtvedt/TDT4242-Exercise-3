@@ -7,8 +7,15 @@ class WeatherInformation {
         this.weatherDescription = weatherDescription;
     }
 
-    isElementExpired() {
-        // TODO
+    isValidCacheData() {
+        let now = new Date().now;
+        let date = new Date(this.timestamp);
+
+        if (now - date > 300000) {
+            return false;
+        } else {
+            return true;
+        } 
     }
 }
 

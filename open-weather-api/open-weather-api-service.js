@@ -17,7 +17,8 @@ class OpenWeatherAPIService {
         return axios.get(this.url, {
             params: {
                 q: cityName,
-                appid: this.apiKey
+                appid: this.apiKey,
+                units: "metric"
             }
         });
     }
