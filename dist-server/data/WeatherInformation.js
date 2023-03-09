@@ -1,12 +1,12 @@
 "use strict";
 
 class WeatherInformation {
-  // timestamp, cityName, temperature, weatherDescription
-  constructor(timestamp, cityName, temperature, weatherDescription) {
-    this.timestamp = timestamp;
-    this.cityName = cityName;
-    this.temperature = temperature;
-    this.weatherDescription = weatherDescription;
+  // Constructor for object directly from WeatherAPI
+  constructor(weatherObject) {
+    this.timestamp = new Date().getTime();
+    this.cityName = weatherObject.name;
+    this.temp = Math.round(weatherObject.main.temp_min);
+    this.description = weatherObject.weather[0].description;
   }
   isValidCacheData() {
     let now = new Date().now;

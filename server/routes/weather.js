@@ -1,11 +1,12 @@
 import express from 'express';
-const getWeather = require('../local-weather-service');
+const weatherService = require('../local-weather-service');
+
 
 const router = express.Router();
 
 router.get('/:city', async function(req, res) {
   const city = req.params.city;
-  const result = await getWeather(city);
+  const result = await weatherService.getWeather(city);
 
   // Check if result is 404
   if (result === 404) {
@@ -16,7 +17,20 @@ router.get('/:city', async function(req, res) {
 });
 
 router.get('/', function(req, res) {
-  //TODO Implement
+  const max = req.query.max;
+  var output = "";
+  
+  if (max.length === 0) {
+    output = weatherService.getAllCacheData();
+  } else {
+    output = weatherService.getCacheData(max);
+  }
+
+  if (output === 400) {
+    res.status(400).send("Bad request error.");
+  } else {
+    res.status(200).send(output);
+  }
 });
 
 

@@ -28,20 +28,15 @@ class WeatherCache {
       console.log("Did not find the element in cache to remove.");
     }
   }
-  addCityToCache(weatherData) {
-    // Create weather information object
-    try {
-      var now = new Date().getTime();
-      var cityName = weatherData.name;
-      var temp = Math.round(weatherData.main.temp_min);
-      var description = weatherData.weather[0].description;
-      let newEntry = new WeatherInformation(now, cityName, temp, description);
-      this.cache.push(newEntry);
-      return newEntry;
-    } catch {
-      return {
-        "Error": "Could not save to cache"
-      };
+  addCityToCache(weatherElement) {
+    // Only save if cache is not full
+    if (this.cache.length < 5) {
+      // Create weather information object
+      try {
+        this.cache.push(weatherElement);
+      } catch {
+        console.log("Could not save to cache.");
+      }
     }
   }
 }

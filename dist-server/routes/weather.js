@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _express = _interopRequireDefault(require("express"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const getWeather = require('../local-weather-service');
+const weatherService = require('../local-weather-service');
 const router = _express.default.Router();
 router.get('/:city', async function (req, res) {
   const city = req.params.city;
-  const result = await getWeather(city);
+  const result = await weatherService.getWeather(city);
 
   // Check if result is 404
   if (result === 404) {
@@ -20,7 +20,18 @@ router.get('/:city', async function (req, res) {
   }
 });
 router.get('/', function (req, res) {
-  //TODO Implement
+  const max = req.query.max;
+  var output = "";
+  if (max.length === 0) {
+    output = weatherService.getAllCacheData();
+  } else {
+    output = weatherService.getCacheData(max);
+  }
+  if (output === 400) {
+    res.status(400).send("Bad request error.");
+  } else {
+    res.status(200).send(output);
+  }
 });
 var _default = router;
 exports.default = _default;
