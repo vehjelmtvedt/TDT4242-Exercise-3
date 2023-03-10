@@ -18,13 +18,7 @@ router.get('/:city', async function(req, res) {
 
 router.get('/', function(req, res) {
   const max = req.query.max;
-  var output = "";
-  
-  if (max.length === 0) {
-    output = weatherService.getAllCacheData();
-  } else {
-    output = weatherService.getCacheData(max);
-  }
+  const output = req.query.max === undefined ? weatherService.getAllCacheData() : weatherService.getCacheData(max);
 
   if (output === 400) {
     res.status(400).send("Bad request error.");
@@ -32,6 +26,7 @@ router.get('/', function(req, res) {
     res.status(200).send(output);
   }
 });
+
 
 
 export default router;

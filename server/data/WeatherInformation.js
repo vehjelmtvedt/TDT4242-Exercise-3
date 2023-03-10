@@ -3,8 +3,8 @@ class WeatherInformation {
     constructor(weatherObject) {
         this.timestamp = new Date().getTime();
         this.cityName =  weatherObject.name;
-        this.temp = Math.round(weatherObject.main.temp_min);
-        this.description = weatherObject.weather[0].description;
+        this.temperature = Math.round(weatherObject.main.temp_min);
+        this.weatherDescription = weatherObject.weather[0].description;
     }
 
     isValidCacheData() {
