@@ -29,7 +29,7 @@ describe('Test Funtionality', () => {
     expect(response.statusCode).toBe(400);
   });
 
-  it('Test Get All Elements In Cache When cache.size() < max', async () => {
+  it('Test Get All Elements In Cache When max > cache.size()', async () => {
     await request(app).get("/weather/Washington");
     await request(app).get("/weather/Austin");
     const response = await request(app).get('/weather/?max=3');

@@ -1,0 +1,27 @@
+4.a. Test coverage:
+Statement coverage refers to the percentage of statements in the code that have been executed by the test suite. Branch coverage refers to the percentage of branches (i.e., conditional statements) that have been executed by the test suite.
+
+For statement coverage, both test files have good coverage as all the statements in the code have been executed at least once during the tests.
+
+For branch coverage, the first test file has good coverage because all the possible branch paths in the code have been executed at least once. However the second test file has not achieved 100% branch coverage because there are a few branch paths that have not been executed. Specifically, the else branch of the getWeatherByCityName function in local-weather-service.js has not been executed during the tests.
+
+4.b. Test Plan:
+Blackbox Testing Techniques:
+Equivalence Partitioning:
+This technique involves dividing the input data into different partitions or classes based on their characteristics or values. Test cases are then designed to cover each partition or class, ensuring that all possible inputs are tested.
+
+Boundary Value Analysis:
+This technique involves testing the boundaries of input data, such as the minimum and maximum values. Test cases are designed to test the behavior of the application at these boundaries to ensure that it can handle extreme or unexpected inputs.
+
+Use Case Testing:
+This technique involves testing the application based on realistic user scenarios or workflows. Test cases are designed to cover different use cases or scenarios, to ensure that the application works as expected in real-world situations.
+
+Whitebox Testing Techniques:
+Statement Coverage:
+This technique involves ensuring that every statement in the application code is executed at least once during testing. Test cases are designed to cover all statements, branches, and loops in the code.
+
+Branch coverage:
+This technique involves testing all possible branches of conditional statements (e.g., if-else, switch). The goal is to ensure that all possible outcomes of these statements are tested. In your example, the first test file includes several conditional statements that could be tested using this technique.
+
+Path coverage:
+This technique involves testing all possible execution paths through the code. This includes testing all combinations of conditional statements and loops. The goal is to ensure that all possible paths through the code are executed. In your example, the first test file includes multiple paths through the code that could be tested using this technique.
