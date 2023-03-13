@@ -24,6 +24,9 @@ function fetchWeatherFromAPI(cityName) {
     // Save city to cache if possible
     if (cache.size() < 5) {
       cache.set(cityName, weatherObject, TTL);
+    } else {
+      cache.del(cache.keys()[0]);
+      cache.set(cityName, weatherObject, TTL);
     }
     delete weatherObject.timestamp;
     return weatherObject;

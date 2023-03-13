@@ -67,4 +67,8 @@ function getNumberOfElementsInCache(number) {
     return result;
 }
 
-module.exports = {getWeather, getCacheData, getAllCacheData};
+function resetCache() {
+    cache.clear();
+}
+
+module.exports = {getWeather, getCacheData, getAllCacheData, resetCache};
