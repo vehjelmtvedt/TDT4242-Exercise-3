@@ -5,7 +5,6 @@ const WeatherInformation = require('./data/WeatherInformation');
 var cache = require('js-cache');
 const TTL = 300000;
 
-
 async function getWeather(cityName) {
     // First, check if the cache has an entry for this city name
     var result = cache.get(cityName);
@@ -28,7 +27,6 @@ function fetchWeatherFromAPI(cityName) {
         if (cache.size() < 5) {
             cache.set(cityName, weatherObject, TTL);
         } else {
-            console.log(cache.keys())
             cache.del(cache.keys()[0])
             cache.set(cityName, weatherObject, TTL);
         }
